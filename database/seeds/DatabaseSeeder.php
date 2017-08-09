@@ -12,5 +12,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+      factory (App\Book::class,10)->create();
+
+      \App\Student::create(
+            [
+                'name'=>'Saif khan',
+                'class'=>'PHD',
+            ]
+        );
     }
 }
