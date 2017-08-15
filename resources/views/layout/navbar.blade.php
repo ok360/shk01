@@ -5,7 +5,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="/book">Home</a></li>
-            <li><a href="#">Page 1</a></li>
+            <li><a href="{{url ('image')}}">Images</a></li>
             <li><a href="#">Page 2</a></li>
             <li><a href="#">Page 3</a></li>
         </ul>
