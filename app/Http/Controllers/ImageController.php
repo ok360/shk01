@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use Illuminate\Http\Request;
+use File;
 
 class ImageController extends Controller
 {
@@ -14,7 +15,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images= Image::all ();
+        $images= Image::paginate (3);
         return view ('image.index', compact ('images'));
     }
 
@@ -37,8 +38,8 @@ class ImageController extends Controller
     public function store(Request $request)
     {
        $image= $request->file ('image');
-       $image_name= time().$image->getClientOriginalName ();
-      $image->move ('images',$image_name);
+       $image_name= time().'.'.$image->getClientOriginalExtension ();
+        $image->move ('images',$image_name);
 
        $image=new Image();
        $image->name= $image_name;
@@ -90,6 +91,17 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $image = Image::find($id);
+
+//      File::delete('images/'.$image->name);
+
+        unlink ('images/'.$image->name);
+
+
+        Image::destroy ($id);
+
+        return back ();
+
+
     }
 }
