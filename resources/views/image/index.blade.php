@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('site_layout.master')
 
 @section('body')
 <h1>Image Upload</h1>

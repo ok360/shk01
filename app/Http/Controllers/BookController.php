@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BookDetail;
 use Illuminate\Http\Request;
 use App\Book;
 
@@ -9,7 +10,10 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::all ();
+//       return dd(BookDetail::with ('book')->get());
+        $books = Book::with ('bookDetail','bookLang')->get();
+
+        return dd ($books);
         return view ('book.index',compact ('books'));
     }
 

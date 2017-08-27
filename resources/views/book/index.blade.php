@@ -25,6 +25,7 @@
                 <tr>
                     <th>Title</th>
                     <th>Author</th>
+                    <th>Quantity</th>
                     <th>Action</th>
                 </tr>
 
@@ -32,6 +33,11 @@
                 <tr>
                     <td>{{$book->title}}</td>
                     <td>{{$book->author}}</td>
+                    @if($book->bookDetail)
+                    <td>{{$book->bookDetail->qty}}</td>
+                    @else
+                        <td>N/A</td>
+                    @endif
                     <td>
 
                         {!! Form::open(['url'=>['book',$book->id],'method'=>'delete']) !!}
